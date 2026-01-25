@@ -4,7 +4,7 @@ resource "aws_instance" "ec2" {
   instance_type = var.instance_type
 
   tags = {
-    Name = "EC2-from-GitHub-Actions"
+    Name = "EC2-${count.index + 1}"
   }
 }
 
