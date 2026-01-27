@@ -11,6 +11,8 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.xlarge"
+  key_name = "private-key"
+
 
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
