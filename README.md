@@ -14,7 +14,7 @@ The setup is ideal for:
 
 * Terraform portfolio demonstration
 
-====================================================================
+
 
 # 🏗 Architecture
 
@@ -42,7 +42,7 @@ Custom App Port (8080)
 
 * Elastic IP attached to the EC2 instance
 
-==================================================================
+
 
 # 📋 Prerequisites
 
@@ -56,7 +56,7 @@ Make sure you have the following installed and configured:
 
 * IAM user with sufficient permissions (EC2, VPC, EIP, IGW)
 
-====================================================================
+
 
 # 🚀 How to Use
 
@@ -78,7 +78,7 @@ Type "yes" when prompted.
 5️⃣ Destroy Infrastructure
 terraform destroy
 
-=====================================================================
+
 
 # 📦 AMI Selection
 
@@ -92,7 +92,7 @@ Architecture: amd64
 
 This ensures the instance always uses an up-to-date image.
 
-======================================================================
+
 
 # 📎 Author
 
