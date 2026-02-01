@@ -1,42 +1,26 @@
 data "aws_ami" "ubuntu" {
-  most_recent = true
-  owners      = ["099720109477"] # Canonical (Ubuntu)
+  most_recent             = true
 
   filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+    name                  = "name"
+    values                = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
+
+  filter {
+    name                  = "virtualization-type"
+    values                = ["hvm"]
+  }
+
+  owners                  = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.xlarge"
-  key_name = "private-key"
-
-
-  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-
-  root_block_device {
-    volume_size = 30
-    volume_type = "gp3"
-  }
+resource "aws_instance" "terraform_ec2_instance" {
+  ami                     = data.aws_ami.ubuntu.id
+  instance_type           = "t3.micro"
+  subnet_id               = resource.aws_subnet.main_subnet.id
+  vpc_security_group_ids  = [resource.aws_security_group.sg.id]
 
   tags = {
-    Name = "terraform-ec2"
-  }
-
-  provisioner "remote-exec" {
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("~/.ssh/id_rsa")
-      host        = self.public_ip
-    }
-
-    inline = [
-      "sudo apt update",
-      "sudo apt install -y docker.io"
-    ]
+    Name                  = "terraform_ec2_instance"
   }
 }
-
