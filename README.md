@@ -60,22 +60,22 @@ Make sure you have the following installed and configured:
 
 # 🚀 How to Use
 
-1️⃣ Initialize Terraform
+1️⃣ Initialize Terraform =>
 terraform init
 
-2️⃣ Validate Configuration
+2️⃣ Validate Configuration =>
 terraform validate
 
-3️⃣ Preview Infrastructure Changes
+3️⃣ Preview Infrastructure Changes =>
 terraform plan
 
-4️⃣ Apply Infrastructure
+4️⃣ Apply Infrastructure =>
 terraform apply
 
 
 Type "yes" when prompted.
 
-5️⃣ Destroy Infrastructure
+5️⃣ Destroy Infrastructure =>
 terraform destroy
 
 
